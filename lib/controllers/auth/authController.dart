@@ -48,6 +48,7 @@ class AuthController extends GetxController with Validation {
   }
 
   void userNameValidation(String value) {
+    if (value?.isEmpty ?? true) return;
     if (validateEmail(value)) {
       usernameError.value = null;
     } else {
@@ -56,6 +57,7 @@ class AuthController extends GetxController with Validation {
   }
 
   void passwordValidation(String value) {
+    if (value?.isEmpty ?? true) return;
     if (validatePassword(value)) {
       passwordError.value = null;
     } else {
@@ -92,8 +94,8 @@ class AuthController extends GetxController with Validation {
 
   void clearData() {
     userName.value = '';
-    usernameError.value = null;
+    usernameError.value = '';
     password.value = '';
-    passwordError.value = null;
+    passwordError.value = '';
   }
 }

@@ -12,7 +12,7 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       key: key,
-      decoration: InputDecoration(errorText: errorText, hintText: hintText, labelText: labelText),
+      decoration: InputDecoration(errorText: (errorText?.isEmpty ?? true) ? null : errorText, hintText: hintText, labelText: labelText),
       obscureText: obscureText ?? false,
       onChanged: onChanged,
       keyboardType: keyboardType,
