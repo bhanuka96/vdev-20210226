@@ -8,6 +8,8 @@ abstract class IDashProvider {
 class DashProvider extends GetConnect implements IDashProvider {
   @override
   void onInit() {
+    httpClient.defaultDecoder = CategoryModel.fromJson;
+    httpClient.baseUrl = 'https://gorest.co.in/public-api/categories';
   }
 
   @override

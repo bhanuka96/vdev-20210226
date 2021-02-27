@@ -10,6 +10,11 @@ class DashController extends SuperController<CategoryModel> {
   @override
   void onInit() {
     super.onInit();
+    dashRepository.getCategory().then((data) {
+      change(data, status: RxStatus.success());
+    }, onError: (err) {
+      change(null, status: RxStatus.error(err.toString()));
+    });
   }
 
   @override

@@ -12,5 +12,11 @@ class DashRepository implements IDashRepository {
 
   @override
   Future<CategoryModel> getCategories() async {
+    final cases = await provider.getCategories("");
+    if (cases.status.hasError) {
+      return Future.error(cases.statusText);
+    } else {
+      return cases.body;
+    }
   }
 }
