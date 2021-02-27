@@ -13,10 +13,12 @@ class CategoryModel {
   final int code;
   final List<Datum> data;
 
-  static CategoryModel fromJson(dynamic json) => CategoryModel(
-        code: json["code"] == null ? null : json["code"],
-        data: json["data"] == null ? null : List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
-      );
+  static CategoryModel fromJson(dynamic json) => json == null
+      ? null
+      : CategoryModel(
+          code: json["code"] == null ? null : json["code"],
+          data: json["data"] == null ? null : List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        );
 
   Map<String, dynamic> toJson() => {
         "code": code == null ? null : code,
