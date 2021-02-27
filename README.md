@@ -1,6 +1,6 @@
 # vdev-20210226
 
-# You can download apk file from [here](https://drive.google.com/drive/folders/19mgLjACUnMcHVUVZxocIIxzONOlKMHX7?usp=sharing). Project is not fully completed yet.
+# You can download apk file from [here](https://drive.google.com/drive/folders/19mgLjACUnMcHVUVZxocIIxzONOlKMHX7?usp=sharing).
 
 # Q and A
 1)
