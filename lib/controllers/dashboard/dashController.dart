@@ -1,19 +1,21 @@
 import 'package:get/get.dart';
+import 'package:test_saksglobal/constants/strings.dart';
 import 'package:test_saksglobal/domainAdapters/dashboard/adapter.dart';
 import 'package:test_saksglobal/models/categoryModel.dart';
 
 class DashController extends SuperController<CategoryModel> {
   DashController({this.dashRepository});
 
-  final IHomeRepository dashRepository;
+  final IDashRepository dashRepository;
 
   @override
   void onInit() {
     super.onInit();
-    dashRepository.getCategory().then((data) {
+    dashRepository.getCategories().then((data) {
       change(data, status: RxStatus.success());
     }, onError: (err) {
-      change(null, status: RxStatus.error(err.toString()));
+      print('Error : $err');
+      change(null, status: RxStatus.error(Strings.error));
     });
   }
 
@@ -36,5 +38,4 @@ class DashController extends SuperController<CategoryModel> {
   void onResumed() {
     print('onResumed called');
   }
-
 }

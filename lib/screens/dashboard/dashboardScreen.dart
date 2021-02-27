@@ -23,23 +23,27 @@ class DashboardScreen extends GetView<DashController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(text: Strings.category,),
+            CustomText(
+              text: Strings.category,
+            ),
             VerticalSpacing(height: 20),
-            Expanded(
-              child: ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (_, int index) {
-                    return ListTile(
-                      isThreeLine: true,
-                      title: CustomText(text: 'beauty'),
-                      subtitle: CustomText(text: 'Clothing\nGrocery'),
-                    );
-                  },
-                  separatorBuilder: (_, int index) {
-                    return Divider();
-                  },
-                  itemCount: 10),
-            )
+            controller.obx((state) {
+              return Expanded(
+                child: ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (_, int index) {
+                      return ListTile(
+                        isThreeLine: true,
+                        title: CustomText(text: '${state.data[index].name}'),
+                        subtitle: CustomText(text: '${state.data[index].description}\n${state.data[index].status}'),
+                      );
+                    },
+                    separatorBuilder: (_, int index) {
+                      return Divider();
+                    },
+                    itemCount: state.data.length),
+              );
+            })
           ],
         ),
       ),

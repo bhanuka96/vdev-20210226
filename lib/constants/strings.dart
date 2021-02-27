@@ -13,4 +13,5 @@ class Strings {
   static const String signOut = 'Sign-Out';
   static const String category = 'Product Category';
   static const String signInTime = 'Signed-in at:';
+  static const String error = 'Something Happening, Please try again!';
 }

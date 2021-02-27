@@ -1,9 +1,6 @@
 import 'package:test_saksglobal/apiProvider/apiProvider.dart';
+import 'package:test_saksglobal/domainAdapters/dashboard/adapter.dart';
 import 'package:test_saksglobal/models/categoryModel.dart';
-
-abstract class IDashRepository {
-  Future<CategoryModel> getCategories();
-}
 
 class DashRepository implements IDashRepository {
   DashRepository({this.provider});

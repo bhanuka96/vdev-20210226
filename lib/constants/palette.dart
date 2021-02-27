@@ -26,12 +26,12 @@ class Palette {
   static final TextTheme _lightTextTheme = TextTheme(
     headline1: TextStyle(fontSize: 20.0, color: black),
     bodyText1: TextStyle(fontSize: 16.0, color: black),
-    bodyText2: TextStyle(fontSize: 14.0, color: Colors.grey),
+    bodyText2: TextStyle(fontSize: 14.0, color: Colors.black),
     button: TextStyle(
         fontSize: 15.0, color: black, fontWeight: FontWeight.w600),
     headline6: TextStyle(fontSize: 16.0, color: black),
     subtitle1: TextStyle(fontSize: 16.0, color: black),
-    caption: TextStyle(fontSize: 12.0, color: orange),
+    caption: TextStyle(fontSize: 12.0, color: black),
   );
 
   //the light theme

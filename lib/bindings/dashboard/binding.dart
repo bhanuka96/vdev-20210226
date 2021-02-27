@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:test_saksglobal/apiProvider/apiProvider.dart';
 import 'package:test_saksglobal/controllers/dashboard/dashController.dart';
+import 'package:test_saksglobal/domainAdapters/dashboard/adapter.dart';
 import 'package:test_saksglobal/repository/dashboard/repository.dart';
 
 class DashBinding extends Bindings {
