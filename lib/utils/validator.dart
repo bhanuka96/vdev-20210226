@@ -4,7 +4,7 @@ import 'package:test_saksglobal/utils/env.dart';
 class Validation{
   bool validatePassword(String value) {
     if (value.isEmpty) return false;
-    String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{7,}$';
+    String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~-]).{7,}$';
     RegExp regExp = RegExp(pattern);
     if (!regExp.hasMatch(value)) return false;
     return true;
