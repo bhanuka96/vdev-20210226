@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:test_saksglobal/bindings/dashboard/binding.dart';
+import 'package:test_saksglobal/components/loadingDialog.dart';
 import 'package:test_saksglobal/constants/palette.dart';
 import 'package:test_saksglobal/constants/strings.dart';
 import 'package:test_saksglobal/screens/dashboard/dashboardScreen.dart';
@@ -41,7 +43,7 @@ class AuthController extends GetxController with Validation {
     if (_authUser == null) {
       Get.offAll(() => LoginScreen());
     } else {
-      Get.offAll(() => DashboardScreen());
+      Get.offAll(() => DashboardScreen(), binding: DashBinding());
     }
   }
 
@@ -71,6 +73,7 @@ class AuthController extends GetxController with Validation {
 
   void submit() async {
     if (isFormValidate) {
+      Get.dialog(LoadingDialog(), barrierDismissible: false);
       await setUser();
       Get.snackbar(null, Strings.success, backgroundColor: Palette.white);
       await Future.delayed(Duration(seconds: 3));

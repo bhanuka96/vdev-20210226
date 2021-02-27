@@ -5,8 +5,8 @@ class CustomText extends Text {
   final TextOverflow textOverflow;
   final TextAlign textAlign;
   final int maxLines;
+  final Color color;
 
-  CustomText({this.textAlign, this.maxLines, this.textOverflow = TextOverflow.fade, @required this.text})
-      : super(text, textAlign: textAlign,
-      maxLines: maxLines, overflow: textOverflow);
+  CustomText({this.textAlign, this.color, this.maxLines, this.textOverflow = TextOverflow.fade, @required this.text})
+      : super(text, textAlign: textAlign, style: TextStyle(color: color), maxLines: maxLines, overflow: textOverflow);
 }

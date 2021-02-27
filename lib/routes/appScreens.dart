@@ -10,8 +10,8 @@ class AppPages {
   static const INITIAL = Routes.SPLASH;
 
   static final routes = [
-    GetPage(name: Routes.SPLASH, page: () => SplashScreen(), binding: DashBinding()),
-    GetPage(name: Routes.DASHBOARD, page: () => DashboardScreen()),
+    GetPage(name: Routes.SPLASH, page: () => SplashScreen()),
+    GetPage(name: Routes.DASHBOARD, page: () => DashboardScreen(), binding: DashBinding()),
     GetPage(name: Routes.LOGIN, page: () => LoginScreen()),
   ];
 }

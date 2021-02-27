@@ -16,7 +16,10 @@ class DashboardScreen extends GetView<DashController> {
       appBar: AppBar(
         title: CustomText(text: authController.authUser.value),
         centerTitle: true,
-        actions: [CustomTextButton(onPressed: authController.signOut)],
+        actions: [Padding(
+          padding: const EdgeInsets.all(8),
+          child: CustomTextButton(onPressed: authController.signOut),
+        )],
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),

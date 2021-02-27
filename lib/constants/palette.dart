@@ -27,34 +27,33 @@ class Palette {
     headline1: TextStyle(fontSize: 20.0, color: black),
     bodyText1: TextStyle(fontSize: 16.0, color: black),
     bodyText2: TextStyle(fontSize: 14.0, color: Colors.black),
-    button: TextStyle(
-        fontSize: 15.0, color: black, fontWeight: FontWeight.w600),
+    button: TextStyle(fontSize: 15.0, color: black, fontWeight: FontWeight.w600),
     headline6: TextStyle(fontSize: 16.0, color: black),
     subtitle1: TextStyle(fontSize: 16.0, color: black),
     caption: TextStyle(fontSize: 12.0, color: black),
   );
+
+  static final IconThemeData _iconThemeData = IconThemeData(color: black);
 
   //the light theme
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     // fontFamily: font1,
     scaffoldBackgroundColor: white,
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: orange
-    ),
-    appBarTheme: AppBarTheme(
-      color: orange,
-      iconTheme: IconThemeData(color: black),
-      textTheme: _lightTextTheme,
-    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(backgroundColor: orange),
+    appBarTheme: AppBarTheme(color: orange, iconTheme: IconThemeData(color: black), textTheme: _lightTextTheme, actionsIconTheme: _iconThemeData),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.resolveWith((states) => RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5),))),
+       backgroundColor: MaterialStateProperty.resolveWith((states) => white),
+      //    minimumSize: MaterialStateProperty.resolveWith((states) => Size(0, 0)), padding: MaterialStateProperty.resolveWith((states) => EdgeInsets.all(0)),
+      textStyle: MaterialStateProperty.resolveWith((states) =>  TextStyle(fontSize: 14.0, color: black)),
+    ),),
     colorScheme: ColorScheme.light(
       primary: orange,
       primaryVariant: white,
     ),
-    snackBarTheme: SnackBarThemeData(
-        backgroundColor: black,
-        behavior: SnackBarBehavior.fixed,
-        actionTextColor: white),
+    snackBarTheme: SnackBarThemeData(backgroundColor: black, behavior: SnackBarBehavior.fixed, actionTextColor: white),
     iconTheme: IconThemeData(
       color: black,
     ),
@@ -93,5 +92,4 @@ class Palette {
       //focusColor: _lightBorderActiveColor,
     ),
   );
-
 }

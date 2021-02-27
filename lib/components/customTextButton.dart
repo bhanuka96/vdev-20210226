@@ -9,6 +9,8 @@ class CustomTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(onPressed: onPressed, child: CustomText(text: Strings.signOut));
+    return TextButton(onPressed: onPressed,
+
+        child: CustomText(text: Strings.signOut));
   }
 }

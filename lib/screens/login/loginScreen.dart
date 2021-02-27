@@ -63,6 +63,7 @@ class LoginScreen extends StatelessWidget {
                         onPressed: !authController.isFormValidate
                             ? null
                             : () {
+                                FocusScope.of(context).requestFocus(FocusNode());
                                 authController.submit();
                               },
                       ));
