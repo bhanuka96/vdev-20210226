@@ -33,6 +33,8 @@ class AuthController extends GetxController with Validation{
 
   Future<void> setUser() async => await box.write('email', userName.value);
 
+  bool get isFormValidate => usernameError.value == null && passwordError.value == null && userName.value.isNotEmpty && password.value.isNotEmpty;
+
   void handleAuthChanged(_authUser) async {
     if (_authUser == null) {
       Get.offAll(LoginScreen());
