@@ -1,24 +1,26 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:test_saksglobal/constants/palette.dart';
 import 'package:test_saksglobal/constants/strings.dart';
 import 'package:test_saksglobal/screens/dashboard/dashboardScreen.dart';
 import 'package:test_saksglobal/screens/login/loginScreen.dart';
 import 'package:test_saksglobal/utils/validator.dart';
 
-class AuthController extends GetxController with Validation{
+class AuthController extends GetxController with Validation {
   static AuthController to = Get.find();
   final box = GetStorage();
 
   Rx<String> authUser = Rx<String>();
   RxString userName = ''.obs;
   RxString password = ''.obs;
-  RxString usernameError = RxString(null);
-  RxString passwordError = RxString(null);
+  RxString usernameError = RxString('');
+  RxString passwordError = RxString('');
 
   @override
-  void onReady() async{
+  void onReady() async {
     super.onReady();
     ever(authUser, handleAuthChanged);
+    // await signOut();
     authUser.value = await getUser;
     debounce(userName, userNameValidation, time: Duration(milliseconds: 100));
     debounce(password, passwordValidation, time: Duration(milliseconds: 100));
@@ -37,9 +39,9 @@ class AuthController extends GetxController with Validation{
 
   void handleAuthChanged(_authUser) async {
     if (_authUser == null) {
-      Get.offAll(LoginScreen());
+      Get.offAll(() => LoginScreen());
     } else {
-      Get.offAll(DashboardScreen());
+      Get.offAll(() => DashboardScreen());
     }
   }
 
@@ -65,5 +67,30 @@ class AuthController extends GetxController with Validation{
 
   void passwordChanged(String val) {
     password.value = val;
+  }
+
+  void submit() async {
+    if (isFormValidate) {
+      await setUser();
+      Get.snackbar(null, Strings.success, backgroundColor: Palette.white);
+      await Future.delayed(Duration(seconds: 3));
+      authUser.value = userName.value;
+      clearData();
+    } else {
+      Get.snackbar(null, Strings.invalidAll, backgroundColor: Palette.red);
+    }
+  }
+
+  Future<void> signOut() async {
+    await box.erase();
+    authUser.value = null;
+    return null;
+  }
+
+  void clearData() {
+    userName.value = '';
+    usernameError.value = null;
+    password.value = '';
+    passwordError.value = null;
   }
 }

@@ -60,9 +60,11 @@ class LoginScreen extends StatelessWidget {
                       alignment: Alignment.centerRight,
                       child: CustomButton(
                         name: Strings.signIn,
-                        onPressed: !authController.isFormValidate ? null : () {
-
-                        },
+                        onPressed: !authController.isFormValidate
+                            ? null
+                            : () {
+                                authController.submit();
+                              },
                       ));
                 })
               ],
