@@ -1,4 +1,5 @@
 class Strings {
+  static const String login = 'Log-In';
   static const String email = 'Email';
   static const String password = 'Password';
   static const String emailHint = 'Enter your email';
