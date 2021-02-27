@@ -1,7 +1,12 @@
 import 'package:get/get.dart';
+import 'package:test_saksglobal/domainAdapters/dashboard/adapter.dart';
 import 'package:test_saksglobal/models/categoryModel.dart';
 
 class DashController extends SuperController<CategoryModel> {
+  DashController({this.dashRepository});
+
+  final IHomeRepository dashRepository;
+
   @override
   void onInit() {
     super.onInit();
