@@ -74,15 +74,15 @@ class AuthController extends GetxController with Validation {
   }
 
   void submit() async {
-    if (isFormValidate) {
+    if (isMatchAccounts(userName.value,password.value)) {
       Get.dialog(LoadingDialog(), barrierDismissible: false);
       await setUser();
-      Get.snackbar(null, Strings.success, backgroundColor: Palette.white);
+      Get.snackbar(null, Strings.success, backgroundColor: Palette.white,colorText: Palette.black);
       await Future.delayed(Duration(seconds: 3));
       authUser.value = UserModel.getUser(userName.value);
       clearData();
     } else {
-      Get.snackbar(null, Strings.invalidAll, backgroundColor: Palette.red);
+      Get.snackbar(null, Strings.invalidAll, backgroundColor: Palette.white,colorText: Palette.red);
     }
   }
 

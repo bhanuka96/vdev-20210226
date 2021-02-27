@@ -33,7 +33,7 @@ class DashboardScreen extends GetView<DashController> {
                 CustomText(
                   text: Strings.category,
                 ),
-                CustomText(text: CustomDate(authController.authUser.value.date).ymdHmsFormat)
+                CustomText(text: '${Strings.signInTime} ${CustomDate(authController.authUser.value.date).ymdHmsFormat}')
               ],
             ),
             VerticalSpacing(height: 20),
