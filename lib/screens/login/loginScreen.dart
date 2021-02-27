@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test_saksglobal/components/customButton.dart';
+import 'package:test_saksglobal/components/customEleButton.dart';
 import 'package:test_saksglobal/components/customText.dart';
 import 'package:test_saksglobal/components/customTextField.dart';
 import 'package:test_saksglobal/components/verticalSpacing.dart';
@@ -58,7 +58,7 @@ class LoginScreen extends StatelessWidget {
                 Obx(() {
                   return Align(
                       alignment: Alignment.centerRight,
-                      child: CustomButton(
+                      child: CustomEleButton(
                         name: Strings.signIn,
                         onPressed: !authController.isFormValidate
                             ? null

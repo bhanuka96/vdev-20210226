@@ -2,6 +2,7 @@ class Strings {
   static const String login = 'Log-In';
   static const String email = 'Email';
   static const String password = 'Password';
+  static const String dashboard = 'Dashboard';
   static const String emailHint = 'Enter your email';
   static const String passwordHint = 'Enter your password';
   static const String signIn = 'Sign-In';
