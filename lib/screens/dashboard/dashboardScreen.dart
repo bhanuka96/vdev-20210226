@@ -6,6 +6,7 @@ import 'package:test_saksglobal/components/verticalSpacing.dart';
 import 'package:test_saksglobal/constants/strings.dart';
 import 'package:test_saksglobal/controllers/auth/authController.dart';
 import 'package:test_saksglobal/controllers/dashboard/dashController.dart';
+import 'package:test_saksglobal/utils/customDate.dart';
 
 class DashboardScreen extends GetView<DashController> {
   final AuthController authController = AuthController.to;
@@ -14,7 +15,7 @@ class DashboardScreen extends GetView<DashController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CustomText(text: authController.authUser.value),
+        title: CustomText(text: authController.authUser.value.email),
         centerTitle: true,
         actions: [Padding(
           padding: const EdgeInsets.all(8),
@@ -26,8 +27,14 @@ class DashboardScreen extends GetView<DashController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(
-              text: Strings.category,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomText(
+                  text: Strings.category,
+                ),
+                CustomText(text: CustomDate(authController.authUser.value.date).ymdHmsFormat)
+              ],
             ),
             VerticalSpacing(height: 20),
             controller.obx((state) {

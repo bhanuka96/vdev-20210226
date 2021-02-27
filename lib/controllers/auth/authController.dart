@@ -4,6 +4,7 @@ import 'package:test_saksglobal/bindings/dashboard/binding.dart';
 import 'package:test_saksglobal/components/loadingDialog.dart';
 import 'package:test_saksglobal/constants/palette.dart';
 import 'package:test_saksglobal/constants/strings.dart';
+import 'package:test_saksglobal/models/userModel.dart';
 import 'package:test_saksglobal/screens/dashboard/dashboardScreen.dart';
 import 'package:test_saksglobal/screens/login/loginScreen.dart';
 import 'package:test_saksglobal/utils/validator.dart';
@@ -12,7 +13,7 @@ class AuthController extends GetxController with Validation {
   static AuthController to = Get.find();
   final box = GetStorage();
 
-  Rx<String> authUser = Rx<String>();
+  Rx<UserModel> authUser = Rx<UserModel>();
   RxString userName = ''.obs;
   RxString password = ''.obs;
   RxString usernameError = RxString('');
@@ -22,7 +23,6 @@ class AuthController extends GetxController with Validation {
   void onReady() async {
     super.onReady();
     ever(authUser, handleAuthChanged);
-    // await signOut();
     authUser.value = await getUser;
     debounce(userName, userNameValidation, time: Duration(milliseconds: 100));
     debounce(password, passwordValidation, time: Duration(milliseconds: 100));
@@ -33,9 +33,9 @@ class AuthController extends GetxController with Validation {
     super.dispose();
   }
 
-  Future<String> get getUser async => await box.read('email');
+  Future<UserModel> get getUser async => UserModel.fromJson(await box.read('auth'));
 
-  Future<void> setUser() async => await box.write('email', userName.value);
+  Future<void> setUser() async => await box.write('auth', UserModel.getUser(userName.value).toJson());
 
   bool get isFormValidate => usernameError.value == null && passwordError.value == null && userName.value.isNotEmpty && password.value.isNotEmpty;
 
@@ -77,7 +77,7 @@ class AuthController extends GetxController with Validation {
       await setUser();
       Get.snackbar(null, Strings.success, backgroundColor: Palette.white);
       await Future.delayed(Duration(seconds: 3));
-      authUser.value = userName.value;
+      authUser.value = UserModel.getUser(userName.value);
       clearData();
     } else {
       Get.snackbar(null, Strings.invalidAll, backgroundColor: Palette.red);
